@@ -5,6 +5,7 @@
 	String ctx = request.getContextPath(); //콘텍스트명 얻어오기.
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+`
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
@@ -33,6 +34,7 @@
 </style>
 </head>
 <body id="page-top">
+
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg bg-success text-uppercase fixed-top" id="mainNav">
 	<div class="container">
@@ -58,15 +60,13 @@
 		<div id="wrap">
 			<br> <br> <b><font size="6">회원가입</font></b> <br> <br> <br>
 
-			<form method="post" action="MemberJoinAction.do" name="userInfo">
+			<form method="post" action="MemberJoinAction.do" name="userInfo" onsubmit="return checkValue();">
 
 				<table>
 					<tr>
 						<td id="title">아이디</td>
 						<td>
-							<input type="text" name="id" id="id" maxlength="50" onkeydown="inputIdChk()">
-							<input type="button" value="중복확인" onclick="openIdChk()" class="btn btn-success btn-sm">
-							<input type="hidden" name="idDuplication" value="idUncheck">
+							<input type="text" name="id" id="id" maxlength="50" onkeydown="inputIdChk()"> <input type="button" value="중복확인" onclick="openIdChk()" class="btn btn-success btn-sm"> <input type="hidden" name="idDuplication" value="idUncheck">
 					</tr>
 
 					<tr>
@@ -105,9 +105,7 @@
 					<tr>
 						<td id="title">이메일</td>
 						<td>
-							<input type="text" name="email_1" maxlength="30">
-							@
-							<input type="text" name="email_2" maxlength="15" placeholder="" size="25">
+							<input type="text" name="email_1" maxlength="30">@ <input type="text" name="email_2" maxlength="15" placeholder="" size="25">
 						</td>
 					</tr>
 
@@ -155,8 +153,8 @@
 
 		<script type="text/javascript">
 			// 회원가입 화면의 입력값들을 검사한다.
-			var form = document.userInfo;
 			function checkValue() {
+				var form = document.userInfo;
 
 				if (!form.id.value) {
 					alert("아이디를 입력하세요.");
@@ -169,6 +167,10 @@
 
 				if (!form.password.value) {
 					alert("비밀번호를 입력하세요.");
+					return false;
+				}
+				if (!form.password2.value) {
+					alert("비밀번호확인을 입력하세요.");
 					return false;
 				}
 				if (!form.birth_yy.value) {
@@ -188,6 +190,14 @@
 					alert("아이디 중복체크를 해주세요.");
 					return false;
 				}
+				if (!form.nickname.value) {
+					alert("닉네임을 입력해주세요.");
+					return false;
+				}
+				if (!form.me.value) {
+					alert("본인확인 질문을 입력해주세요.");
+					return false;
+				}
 
 				// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
 				if (form.password.value != form.password2.value) {
@@ -195,23 +205,8 @@
 					return false;
 				}
 
-				if (isNaN(form.birthyy.value)) {
-					alert("년도는 숫자만 입력가능합니다.");
-					return false;
-				}
-
-				if (form.birthmm.value == "00") {
-					alert("월을 선택하세요.");
-					return false;
-				}
-
-				if (!form.birthdd.value) {
-					alert("날짜를 입력하세요.");
-					return false;
-				}
-
-				if (isNaN(form.birthdd.value)) {
-					alert("날짜는 숫자만 입력가능합니다.");
+				if (isNaN(form.birth_yy.value)) {
+					alert("생일은 숫자만 입력가능합니다.");
 					return false;
 				}
 
