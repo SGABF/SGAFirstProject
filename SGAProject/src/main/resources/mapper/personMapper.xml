@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="person">
+	<insert id="saveBmi" parameterType="PersonVO">
+		insert into person
+		(idx,ref,height,weight,result)
+		values
+		(#{idx},#{ref},#{height},#{weight},#{result})
+	</insert>
+
+	<select id="getBmi" parameterType="PersonVO">
+		select 
+    		height,weight,result,regDate
+		from
+			person 
+		where
+			ref = #{idx}
+	</select>
+	<delete id="deleteBmi" parameterType="int">
+		delete from person where idx=#{idx}
+	</delete>
+	
+</mapper>

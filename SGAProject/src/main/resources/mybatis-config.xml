@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 프로퍼티 파일 이름 지정 -->
+	<properties resource="db.properties"></properties>
+	
+	<!-- VO를 만들때마다 1개씩 추가해라 -->
+	<typeAliases>
+		<typeAlias type="kr.green.login.vo.MemberVO" alias="MemberVO"/>
+		<typeAlias type="kr.green.login.vo.PersonVO" alias="PersonVO"/>
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${m.driver}" />
+				<property name="url" value="${m.url}" />
+				<property name="username" value="${m.username}" />
+				<property name="password" value="${m.password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<!-- 매퍼파일 만들때 마다 추가하라 -->
+	<mappers>
+		<mapper resource="mapper/testMapper.xml" />
+		<mapper resource="mapper/personMapper.xml" />
+		<mapper resource="mapper/memberMapper.xml" />
+	</mappers>
+	
+</configuration>
