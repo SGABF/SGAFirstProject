@@ -3,6 +3,7 @@
  */
 package kr.green.login.dao;
 
+import java.sql.SQLException;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;
@@ -38,7 +39,7 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("member.updateMember", memberVO);
 	}
 	@Override
-	public MemberVO selectId(SqlSession sqlSession, int idx) {
+	public String selectId(SqlSession sqlSession, int idx) {
 		return sqlSession.selectOne("member.selectId", idx);
 	}
 	@Override
@@ -58,7 +59,11 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne("member.findPassCheck", map);
 	}
 	@Override
-	public MemberVO memberLogin(SqlSession sqlSession, HashMap<String, String> map) {
+	public String memberLogin(SqlSession sqlSession, HashMap<String, String> map) {
 		return sqlSession.selectOne("member.memberLogin", map);
+	}
+	@Override
+	public int selectIdx(SqlSession sqlSession, HashMap<String, String> map) {
+		return sqlSession.selectOne("member.selectIdx", map);
 	}
 }

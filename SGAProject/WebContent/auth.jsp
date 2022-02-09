@@ -8,7 +8,7 @@ class User {
         this.password = password;
     }
     public boolean check(String id, String password) {
-        // 이메일이 같지않다면?
+        // 아이디가 같지않다면?
         if (!id.equalsIgnoreCase(this.id))
             return false;
         // 비밀번호가 다르다면?

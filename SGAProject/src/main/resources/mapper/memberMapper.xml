@@ -29,6 +29,7 @@
 		update member
 		set
 		phone = #{phone},
+		password = password(#{password}),
 		email = #{email},
 		nickName = #{nickName}
 		where
@@ -43,7 +44,7 @@
 	</update>
 	
 	<!-- 아이디찾기 -->
-	<select id="selectId" parameterType="int" resultType="MemberVO">
+	<select id="selectId" parameterType="int" resultType="String">
 		select
 		id
 		from
@@ -75,9 +76,15 @@
 		and phone = #{phone}
 	</select>
 
-	<!-- 11. 아이디 체크 -->
+	<!-- 11. 닉네임 가져오기 -->
 	<select id="memberLogin" parameterType="hashmap" resultType="String">
 		select nickName from member
+		where id = #{id} and password = #{password}
+	</select>
+
+	<!-- 12. idx 가져오기 -->
+	<select id="selectIdx" parameterType="hashmap" resultType="int">
+		select idx from member
 		where id = #{id} and password = password(#{password})
 	</select>
 

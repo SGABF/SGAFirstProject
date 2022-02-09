@@ -283,11 +283,12 @@ public class LoginServiceImpl implements LoginService {
 		log.debug("deleteBmi 리턴 : ");
 	}
 	@Override
-	public void memberLogin(MemberVO memberVO) {
+	public String memberLogin(MemberVO memberVO) {
 		// 1. 바뀌는 부분 -- 상단의 로그와 리턴 타입 변수 부분
 		log.debug("memberLogin 호출 : " + memberVO);
 		// ------------------------------------------------------------------------------------
 		SqlSession sqlSession = null;
+		String nickName = "";
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
@@ -298,7 +299,7 @@ public class LoginServiceImpl implements LoginService {
 				map.put("idx", "" + memberVO.getIdx());
 				map.put("id", memberVO.getId());
 				map.put("password", memberVO.getPassword());
-				memberDAO.memberLogin(sqlSession, map);
+				nickName = memberDAO.memberLogin(sqlSession, map);
 			}
 			// -----------------------------------------------------------------
 			sqlSession.commit();
@@ -311,6 +312,39 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("memberLogin 리턴 : ");
+		log.debug("memberLogin 리턴 : " + nickName);
+		return nickName;
+	}
+	@Override
+	public int selectIdx(String id, String password) {
+		// 1. 바뀌는 부분 -- 상단의 로그와 리턴 타입 변수 부분
+		log.debug("selectIdx 호출 : " + id + ", " + password);
+		// ------------------------------------------------------------------------------------
+		SqlSession sqlSession = null;
+		int idx = 0;
+		MemberDAO memberDAO = MemberDAOImpl.getInstance();
+		try {
+			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
+			// -----------------------------------------------------------------
+			// 2. 바뀌는 부분 -- dao를 호출하여 로직을 수행하는 부분
+			if (id != null && id != "" && password != null && password != "") {
+				HashMap<String, String> map = new HashMap<String, String>();
+				map.put("id", id);
+				map.put("password", password);
+				idx = memberDAO.selectIdx(sqlSession, map);
+			}
+			// -----------------------------------------------------------------
+			sqlSession.commit();
+		} catch (Exception e) {
+			sqlSession.rollback();
+			e.printStackTrace();
+		} finally {
+			if (sqlSession != null)
+				sqlSession.close();
+		}
+		// ------------------------------------------------------------------------------------
+		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
+		log.debug("selectIdx 리턴 : " + idx);
+		return idx;
 	}
 }

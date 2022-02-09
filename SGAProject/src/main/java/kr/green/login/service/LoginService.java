@@ -20,7 +20,8 @@ public interface LoginService {
 	void insertBmi(PersonVO personVO);
 	// bmi 값 삭제
 	void deleteBmi(PersonVO personVO);
-	// 로그인 
-	void memberLogin(MemberVO memberVO);
-
+	// 닉네임가져오기
+	String memberLogin(MemberVO memberVO);
+	// idx가져오기
+	int selectIdx(String id, String password);
 }
