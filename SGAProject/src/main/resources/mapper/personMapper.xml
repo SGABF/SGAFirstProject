@@ -27,4 +27,10 @@
 		idx=#{idx}
 	</delete>
 
+	<!-- 3) bmi값 전체삭제하기 -->
+	<delete id="deleteAllBmi" parameterType="int">
+		delete from person where
+		ref=#{ref}
+	</delete>
+
 </mapper>

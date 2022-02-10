@@ -3,7 +3,6 @@
  */
 package kr.green.login.dao;
 
-import java.sql.SQLException;
 import java.util.HashMap;
 
 import org.apache.ibatis.session.SqlSession;

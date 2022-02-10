@@ -57,7 +57,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("welcomeMember 리턴 : ");
+		log.debug("welcomeMember 리턴 : " + memberVO);
 	}
 
 	@Override
@@ -118,13 +118,13 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("update 리턴 : ");
+		log.debug("update 리턴 : " + memberVO);
 	}
 
 	@Override
-	public void delete(MemberVO memberVO) {
+	public void delete(int idx) {
 		// 1. 바뀌는 부분 -- 상단의 로그와 리턴 타입 변수 부분
-		log.debug("delete 호출 : " + memberVO);
+		log.debug("delete 호출 : " + idx);
 		// ------------------------------------------------------------------------------------
 		SqlSession sqlSession = null;
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
@@ -133,9 +133,9 @@ public class LoginServiceImpl implements LoginService {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			// -----------------------------------------------------------------
 			// 2. 바뀌는 부분 -- dao를 호출하여 로직을 수행하는 부분
-			if (memberVO != null) {
-					personDAO.deleteBmi(sqlSession, memberVO.getIdx());
-					memberDAO.delete(sqlSession, memberVO.getIdx());
+			if (getMember(idx) != null) {
+				personDAO.deleteAllBmi(sqlSession, idx); 
+				memberDAO.delete(sqlSession, idx);
 			}
 			// -----------------------------------------------------------------
 			sqlSession.commit();
@@ -148,7 +148,7 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("delete 리턴 : " + memberVO );
+		log.debug("delete 리턴 : ");
 	}
 
 	@Override
@@ -252,13 +252,13 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("insertBmi 리턴 : ");
+		log.debug("insertBmi 리턴 : " + personVO);
 	}
 
 	@Override
-	public void deleteBmi(PersonVO personVO) {
+	public void deleteBmi(int idx) {
 		// 1. 바뀌는 부분 -- 상단의 로그와 리턴 타입 변수 부분
-		log.debug("deleteBmi 호출 : " + personVO);
+		log.debug("deleteBmi 호출 : " + idx);
 		// ------------------------------------------------------------------------------------
 		SqlSession sqlSession = null;
 		PersonDAO personDAO = PersonDAOImpl.getInstance();
@@ -266,8 +266,8 @@ public class LoginServiceImpl implements LoginService {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			// -----------------------------------------------------------------
 			// 2. 바뀌는 부분 -- dao를 호출하여 로직을 수행하는 부분
-			if (personVO != null) {
-				personDAO.deleteBmi(sqlSession, personVO.getIdx());
+			if(personDAO.getBmi(sqlSession, idx) != null){
+				personDAO.deleteBmi(sqlSession, idx);
 			}
 			// -----------------------------------------------------------------
 			sqlSession.commit();
