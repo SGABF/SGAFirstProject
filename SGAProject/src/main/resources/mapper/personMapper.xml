@@ -3,23 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="person">
+	<!-- 1) bmi값 저장하기 -->
 	<insert id="saveBmi" parameterType="PersonVO">
 		insert into person
-		(idx,ref,height,weight,result)
+		(ref,height,weight,result)
 		values
-		(#{idx},#{ref},#{height},#{weight},#{result})
+		(#{ref},#{height},#{weight},#{result})
 	</insert>
 
-	<select id="getBmi" parameterType="PersonVO">
-		select 
-    		height,weight,result,regDate
+	<!-- 2) bmi값 가져오기 -->
+	<select id="getBmi" parameterType="int" resultType="PersonVO">
+		select
+		height,weight,result,regDate
 		from
-			person 
+		person
 		where
-			ref = #{idx}
+		ref = #{idx}
 	</select>
+
+	<!-- 3) bmi값 삭제하기 -->
 	<delete id="deleteBmi" parameterType="int">
-		delete from person where idx=#{idx}
+		delete from person where
+		idx=#{idx}
 	</delete>
-	
+
 </mapper>
