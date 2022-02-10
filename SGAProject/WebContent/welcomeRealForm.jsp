@@ -198,10 +198,17 @@
 					alert("본인확인 질문을 입력해주세요.");
 					return false;
 				}
-
+				if (form.id2.value != form.id.value) {
+					alert("아이디 중복체크를 해주세요.");
+					return false;
+				}
 				// 비밀번호와 비밀번호 확인에 입력된 값이 동일한지 확인
 				if (form.password.value != form.password2.value) {
 					alert("비밀번호를 동일하게 입력하세요.");
+					return false;
+				}
+				if (!form.${param.frmSubmit}.value) {
+					alert("자동가입문자를 입력하세요.");
 					return false;
 				}
 
