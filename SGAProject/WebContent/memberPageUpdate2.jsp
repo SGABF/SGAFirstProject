@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 
 <%
-	String uId = (String) session.getAttribute("uId");
+	 String uId = (String) session.getAttribute("uId");
 %>
 <!DOCTYPE html>
 <html>
