@@ -6,6 +6,7 @@
 	String id = (String)session.getAttribute("id");
 	String nickName = (String)session.getAttribute("nickName");
 %>
+
 <!doctype html>
 <html lang="ko">
 <title>login</title>

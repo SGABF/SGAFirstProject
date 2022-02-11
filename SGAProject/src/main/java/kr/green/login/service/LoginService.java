@@ -1,6 +1,7 @@
 package kr.green.login.service;
 
 import kr.green.login.vo.MemberVO;
+
 import kr.green.login.vo.PersonVO;
 
 public interface LoginService {

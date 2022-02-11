@@ -3,6 +3,7 @@
 <html lang="ko">
 <%
 	String id = (String)session.getAttribute("id");
+
 	String nickName = (String)session.getAttribute("nickName");
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

@@ -23,6 +23,7 @@
 		MemberVO vo = LoginServiceImpl.getInstance().getMember(idx);
 		nickName = LoginServiceImpl.getInstance().memberLogin(vo);
 		
+		
 	if (idx == 0) {
 		out.println("<script>alert('입력하신 사용자의 정보가 일치하지 않습니다.');history.back();</script>");
 	} else {
