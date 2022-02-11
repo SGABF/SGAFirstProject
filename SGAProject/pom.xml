@@ -236,7 +236,16 @@
 			<url-pattern>/*</url-pattern>
 			<!-- <dispatcher>FORWARD</dispatcher> -->
 		</filter-mapping>
+		<servlet>
+			<servlet-name>CaptchaServlet</servlet-name>
+			<servlet-class>packageName1.packageName2.packageName3.CaptchaServlet</servlet-class>
+			<load-on-startup>1</load-on-startup>
+		</servlet>
 
+		<servlet-mapping>
+			<servlet-name>CaptchaServlet</servlet-name>
+			<url-pattern>/captcha</url-pattern>
+		</servlet-mapping>
 
 	</dependencies>
 </project>

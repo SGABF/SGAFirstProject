@@ -81,17 +81,28 @@ $(document).ready(function() {
 </script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-    //btn_reset 을 클릭했을때의 함수
-    $( "#reLoad").click(function () {
-        $( "#answer" ).each( function () {
-            this.reset();
-        });
-    });
-});
+
+var check = false;
 
 
 
+function clearInput(){
+
+
+	var el = document.getElementById('answer');
+	
+	el.value = "";
+	
+}
+
+
+</script>
+
+<script type="text/javascript">
+function btnDisabled()  {
+	  const target = document.getElementById('check22');
+	  target.disabled = true;
+	}
 </script>
 
 </head>
@@ -99,13 +110,14 @@ $(document).ready(function(){
 	<div id="catpcha"></div>
 	<div id="audiocatpch" style="display: none;"></div>
 
-	<input id="reLoad" class="reLoad" name="reLoad" type="button" value="새로고침"/>
+	<input id="reLoad" class="reLoad" name="reLoad" type="button" value="새로고침" onclick="clearInput()"/>
+	
 	<input id="soundOn" type="button" value="음성듣기" />
 	<br />
-
-	<input type="text" id="answer" name="answer" value="" autofocus="autofocus" />
 	
-	<input type="button" id="frmSubmit" value="확인" />
+	<input type="text" id="answer" class="answer" name="answer" value="" autofocus="autofocus" />
+	
+	<input type="button" id="frmSubmit" value="확인">
 
 
 </body>

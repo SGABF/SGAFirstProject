@@ -38,7 +38,7 @@
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg bg-success text-uppercase fixed-top" id="mainNav">
 	<div class="container">
-		<a class="navbar-brand" href="#page-top">SGAProject</a>
+		<a class="navbar-brand" href="Main.jsp">SGAProject</a>
 		<button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu <i class="fas fa-bars"></i>
 		</button>
@@ -131,19 +131,18 @@
 				<br>
 			</form>
 			<div id="btn-group" class="btn-group" aria-label="Basic example" style="display: inline-block;">
-				<jsp:include page="index.jsp" />
+				<jsp:include page="index.jsp" /> <br>
 			</div>
 		</div>
 		<div style="text-align: center;">
 			<div id="btn-group" class="btn-group" aria-label="Basic example" style="display: inline-block;">
 				<form action="login.jsp" method="post" onclick="return checkValue()">
-					<button type="submit" class="btn btn-success btn-sm d-grid gap-2 mx-auto text-center">회원가입</button>
+					<button type="submit" id="check22" class="btn btn-success btn-sm d-grid gap-2 mx-auto text-center">회원가입</button> <br/>
 				</form>
 			</div>
 			<div id="btn-group" class="btn-group" aria-label="Basic example" style="display: inline-block;">
 				<form action="welcomeForm.jsp" method="post">
-					<button type="submit" class="btn btn-success btn-sm d-grid gap-2 mx-auto text-center">취소</button>
-					<div id="btn-group" class="btn-group" aria-label="Basic example" style="display: inline-block;"></div>
+					<button type="submit"  class="btn btn-success btn-sm d-grid gap-2 mx-auto text-center">취소</button> <br/>
 				</form>
 
 			</div>
@@ -152,6 +151,9 @@
 
 
 		<script type="text/javascript">
+		const btn = document.querySelector('.check22');
+		btn.disabled = false;
+	
 			// 회원가입 화면의 입력값들을 검사한다.
 			function checkValue() {
 				var form = document.userInfo;
@@ -272,6 +274,19 @@
 					fr.submit();
 				}
 			}
+			
+			// Disable function
+			jQuery.fn.extend({
+			    disable: function(state) {
+			        return this.each(function() {
+			            this.disabled = state;
+			        });
+			    }
+			});
+
+		
 		</script>
+		
+		
 </body>
 </html>
