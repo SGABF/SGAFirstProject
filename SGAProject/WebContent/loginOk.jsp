@@ -14,41 +14,30 @@
 <body>
 	<%
 	request.setCharacterEncoding("utf-8");
+	String nickName = "";
+
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
-	
-	SqlSession sqlSession = null;
-	MemberVO vo = new MemberVO(); 
-	MemberDAO dao = MemberDAOImpl.getInstance();
-	
-	HashMap<String, String> map = new HashMap<String, String>();
-	map.put("idx", "" + vo.getIdx());
-	map.put("id", vo.getId());
-	map.put("password", vo.getPassword());
-	dao.memberLogin(sqlSession, map);
-	
-	out.println(map);
-	
-	vo.setId(vo.getId());
-	vo.setPassword(vo.getPassword());
-	
-	LoginServiceImpl.getInstance().memberLogin(vo);
-	
-	
-// 	MemberDAOImpl.getInstance().memberLogin(sqlSession, map);
-	
-// 	LoginServiceImpl.getInstance().getMember(idx);
 
-	if (id.equals("id") && password.equals("password")) {
-		session.setAttribute("id", id);
-		response.sendRedirect("welcome.jsp");
-	} else if (id.equals("id")) {
-		out.println("<script>alert('비밀번호가 틀렸습니다.'); history.back();</script>");
-	} else if (password.equals("password")) {
-		out.println("<script>alert('아이디가 틀렸습니다.'); history.back();</script>");
+	int idx = LoginServiceImpl.getInstance().selectIdx(id, password);
+		MemberVO vo = LoginServiceImpl.getInstance().getMember(idx);
+		nickName = LoginServiceImpl.getInstance().memberLogin(vo);
+		
+		
+	if (idx == 0) {
+		out.println("<script>alert('입력하신 사용자의 정보가 일치하지 않습니다.');history.back();</script>");
 	} else {
-		out.println("<script>alert('아이디와 비밀번호가 틀렸습니다.'); history.back();</script>");
+		out.println("<script>alert('로그인 성공');</script>");
+		session.setAttribute("id", id);
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("nickName", nickName);
+		session.setAttribute("phone", vo.getPhone());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("question", vo.getQuestion());
+		session.setAttribute("answer", vo.getAnswer());
+		response.sendRedirect("welcome.jsp");
 	}
+			
 	%>
 </body>
 </html>

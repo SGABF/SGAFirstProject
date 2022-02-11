@@ -9,7 +9,8 @@
 	<%
 	session.invalidate();
 	out.println("<script>alert('로그아웃되었습니다'); history.back();</script>");
-	response.sendRedirect("login.jsp");
+	response.sendRedirect("Main.jsp");
 	%>
+	
 </body>
 </html>

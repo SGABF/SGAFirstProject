@@ -4,7 +4,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 	String id = (String)session.getAttribute("id");
+	String nickName = (String)session.getAttribute("nickName");
 %>
+
 <!doctype html>
 <html lang="ko">
 <title>login</title>
@@ -154,7 +156,6 @@
 								alert('failed to login: ' + JSON.stringify(err))
 							},
 						});
-				<!--카카오 로그인 -->
 			</script>
 			<script src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>
 </body>

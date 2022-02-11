@@ -14,6 +14,6 @@ public interface PersonDAO {
 	List<PersonVO> getBmi(SqlSession sqlSession, int ref) throws SQLException;
 	// 삭제하기 
 	void deleteBmi(SqlSession sqlSession, int idx) throws SQLException;
-	
-	
+	// 전체삭제하기 
+	void deleteAllBmi(SqlSession sqlSession, int ref) throws SQLException;
 }

@@ -1,6 +1,7 @@
 package kr.green.login.service;
 
 import kr.green.login.vo.MemberVO;
+
 import kr.green.login.vo.PersonVO;
 
 public interface LoginService {
@@ -11,7 +12,7 @@ public interface LoginService {
 	// 회원 정보 수정
 	void update(MemberVO memberVO);
 	// 회원 탈퇴
-	void delete(MemberVO memberVO);
+	void delete(int idx);
 	// 아이디 찾기
 	MemberVO selectId(int idx);
 	// 비밀번호 찾기(수정)
@@ -19,8 +20,9 @@ public interface LoginService {
 	// bmi 값 등록
 	void insertBmi(PersonVO personVO);
 	// bmi 값 삭제
-	void deleteBmi(PersonVO personVO);
-	// 로그인 
-	void memberLogin(MemberVO memberVO);
-
+	void deleteBmi(int idx);
+	// 닉네임가져오기
+	String memberLogin(MemberVO memberVO);
+	// idx가져오기
+	int selectIdx(String id, String password);
 }
