@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views/system/include">
+    <decorator name="main" page="main_decorator.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+    
+    <excludes>
+        <pattern>/signup</pattern>
+        <pattern>/*_pop</pattern>
+    </excludes>
+</decorators>
+
+
