@@ -24,7 +24,7 @@ h1 {
 }
 
 hr {
-	border: solid 1px gray;
+	border: solid 1px gray; s
 	width: 200px;
 	margin: 0 auto;
 }
