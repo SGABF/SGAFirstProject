@@ -14,7 +14,7 @@ public interface LoginService {
 	// 회원 탈퇴
 	void delete(int idx);
 	// 아이디 찾기
-	MemberVO selectId(int idx);
+	String findId(String email, String name, String phone);
 	// 비밀번호 찾기(수정)
 	void updatePassword(MemberVO memberVO);
 	// bmi 값 등록

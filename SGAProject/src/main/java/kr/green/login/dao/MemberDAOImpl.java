@@ -38,8 +38,8 @@ public class MemberDAOImpl implements MemberDAO {
 		sqlSession.update("member.updateMember", memberVO);
 	}
 	@Override
-	public String selectId(SqlSession sqlSession, int idx) {
-		return sqlSession.selectOne("member.selectId", idx);
+	public String findId(SqlSession sqlSession, HashMap<String, String> map) {
+		return sqlSession.selectOne("member.findId", map);
 	}
 	@Override
 	public void updatePassword(SqlSession sqlSession, MemberVO memberVO) {

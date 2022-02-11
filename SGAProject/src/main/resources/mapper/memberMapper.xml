@@ -12,7 +12,7 @@
 		(#{name},#{id},password(#{password}),#{gender},#{phone},#{email},#{birth},#{nickName})
 	</insert>
 
-	<!-- 02) 회원탈퇴  -->
+	<!-- 02) 회원탈퇴 -->
 	<delete id="delete" parameterType="int">
 		delete from member where
 		idx=#{idx}
@@ -20,14 +20,14 @@
 
 	<!-- 03) 회원정보 수정 -->
 	<update id="updateMember" parameterType="MemberVO">
+	
 		update member
 		set
-		phone = #{phone},
-		password = password(#{password}),
-		email = #{email},
+		phone = #{phone}
+		password = password(#{password})
+		email = #{email}
 		nickName = #{nickName}
-		where
-		idx = #{idx}
+		where idx = #{idx}
 	</update>
 
 	<!-- 04) 비밀번호 재설정 -->
@@ -36,40 +36,41 @@
 		set
 		password = password(#{password})
 	</update>
-	
+
 	<!-- 05) 회원정보 가져오기 -->
 	<select id="getMember" parameterType="int" resultType="MemberVO">
 		select *
 		from member where idx=#{idx}
 	</select>
-	
+
 	<!-- 06) 아이디 찾기 -->
-	<select id="selectId" parameterType="int" resultType="String">
-		select
-		id
-		from
-		member
+	<select id="findId" parameterType="hashmap" resultType="String">
+		select id from member
 		where
-		idx = #{idx}
+		email = #{email}
+		and name = #{name}
+		and phone = #{phone}
 	</select>
 
 	<!-- 07) 비밀번호 검사 -->
 	<select id="passwordCheck" parameterType="hashmap" resultType="int">
-		select count(*) from member where idx=#{idx} and password =
-		password(#{password})
+		select count(*) from member
+		where idx=#{idx} and password = password(#{password})
 	</select>
 
 	<!-- 08) 아이디 찾기 인증 -->
 	<select id="findIdCheck" parameterType="hashmap" resultType="int">
-		select count(*) from member where idx=#{idx}
-		and email = #{email}
-		and phone = #{phone}
+		select count(*) from member
+		where
+		email = #{email}
 		and name = #{name}
+		and phone = #{phone}
 	</select>
 
 	<!-- 09) 비밀번호 찾기 인증 -->
 	<select id="findPassCheck" parameterType="hashmap" resultType="int">
-		select count(*) from member where idx=#{idx}
+		select count(*) from member
+		where idx=#{idx}
 		and birth = #{birth}
 		and id = #{id}
 		and name = #{name}
@@ -79,13 +80,15 @@
 	<!-- 10) 닉네임 가져오기 -->
 	<select id="memberLogin" parameterType="hashmap" resultType="String">
 		select nickName from member
-		where id = #{id} and password = #{password}
+		where id = #{id}
+		and password = #{password}
 	</select>
 
-	<!-- 11) idx 가져오기  -->
+	<!-- 11) idx 가져오기 -->
 	<select id="selectIdx" parameterType="hashmap" resultType="int">
 		select idx from member
-		where id = #{id} and password = password(#{password})
+		where id = #{id}
+		and password = password(#{password})
 	</select>
 
 </mapper>

@@ -14,8 +14,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%-- 부트스트랩을 사용하기 위한 준비 끝 --%>
 <script type="text/javascript">
-	function test() {
-		var p1 = document.getElementById('password1').value;
+	function passwordCheck() {
+		var p1 = document.getElementById('password').value;
 
 		if (p1.length < 6) {
 			alert('입력한 글자가 6글자 이상이어야 합니다.');
@@ -57,9 +57,9 @@ div {
 		<p>
 
 			비밀번호
-			<input type="password" id="password1">
+			<input type="password" id="password" autofocus>
 		<form action="memberPageUpdate2.jsp" method="post">
-			<input type="submit" value="확인" class="btn btn-success d-grid gap-2 col-6 mx-auto btn btn-dark btn-sm">
+			<input type="submit" value="확인"  class="btn btn-success d-grid gap-2 col-6 mx-auto btn btn-dark btn-sm">
 		</form>
 	</div>
 </body>

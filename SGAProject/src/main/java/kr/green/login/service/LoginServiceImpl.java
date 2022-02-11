@@ -153,10 +153,10 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public MemberVO selectId(int idx) {
+	public String findId(String email, String name, String phone) {
 		// 1. 바뀌는 부분 -- 상단의 로그와 리턴 타입 변수 부분
-		log.debug("selectId 호출 : " + idx);
-		MemberVO memberVO = null;
+		log.debug("findId 호출 : " + email + ", " + name + ", " + ", " + phone);
+		String foundId = "";
 		//-----------------------------------------------------------------------
 		SqlSession sqlSession = null;
 		MemberDAO memberDAO = MemberDAOImpl.getInstance();
@@ -165,15 +165,13 @@ public class LoginServiceImpl implements LoginService {
 		try {
 			sqlSession = MybatisApp.getSqlSessionFactory().openSession(false);
 			// -----------------------------------------------------------------
-			memberVO = memberDAO.getMember(sqlSession, idx); // 1) 해당 글번호 글을 읽어오기
-			if (memberVO != null) {
+			if (email != null && email != "" && name != null && name != "" && phone != null && phone != "") {
 				HashMap<String, String> map = new HashMap<String, String>();
-				map.put("idx", "" + memberVO.getIdx());
-				map.put("name", memberVO.getName());
-				map.put("phone", memberVO.getPhone());
-				map.put("email", memberVO.getEmail());
+				map.put("email", email);
+				map.put("name", name);
+				map.put("phone", phone);
 				if (memberDAO.findIdCheck(sqlSession, map) == 1) {
-					memberDAO.selectId(sqlSession, memberVO.getIdx());
+					foundId = memberDAO.findId(sqlSession, map);
 				}
 			}
 			// -----------------------------------------------------------------
@@ -187,8 +185,8 @@ public class LoginServiceImpl implements LoginService {
 		}
 		// ------------------------------------------------------------------------------------
 		// 3. 바뀌는 부분 -- 하단의 로그와 리턴값
-		log.debug("selectId 리턴 : " + memberVO);
-		return memberVO;
+		log.debug("findId 리턴 : " + foundId);
+		return foundId;
 	}
 
 	@Override
