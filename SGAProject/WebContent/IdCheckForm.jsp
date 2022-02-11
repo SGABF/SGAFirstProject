@@ -20,6 +20,7 @@
 	visibility: visible;
 }
 
+
 #useBtn {
 	visibility: hidden;
 }

@@ -19,6 +19,7 @@
 function test() {
   var p1 = document.getElementById('password1').value;
   
+  
   if(p1.length < 6 ) {
           alert('입력한 글자가 6글자 이상이어야 합니다.');
           return false;

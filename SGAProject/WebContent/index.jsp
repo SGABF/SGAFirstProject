@@ -22,6 +22,7 @@ response.setDateHeader("Expires",0);
 <script type="text/javascript">
 var rand;
 
+
 //캡차 오디오 요청
 function audioCaptcha() {
 	$.ajax({

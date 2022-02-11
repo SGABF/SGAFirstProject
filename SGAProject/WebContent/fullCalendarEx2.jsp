@@ -23,6 +23,7 @@
 <%-- 숫자를 이쁘게 출력하기 위한 자바스크립트 라이브러리 --%>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
 
+
 <script type="text/javascript">
 	$(function() {
 		var calendarEl = document.getElementById('calendar'); // id찾기

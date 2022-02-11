@@ -28,6 +28,7 @@
 	map.put("password", vo.getPassword());
 	dao.memberLogin(sqlSession, map);
 	
+	
 	out.println(map);
 	
 	vo.setId(vo.getId());

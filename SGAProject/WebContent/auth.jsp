@@ -19,6 +19,7 @@ class User {
         return true;
     }
 }
+
 %>
 <%
 /* 1. 폼 데이터를 받아오시오. (구글링: jsp request form 값 받기) */

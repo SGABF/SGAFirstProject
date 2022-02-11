@@ -262,6 +262,7 @@ SGVProject 서비스에는 기본적으로 본 약관이 적용됩니다만, 부
 2018년 5월 1일
 SGVProject 서비스와 관련하여 궁금하신 사항이 있으시면 고객센터(대표번호: 1588 – 3820/ 평일 09:00~18:00)로 문의 주시기 바랍니다.
 		</textarea>
+		
 			<label for="agree2"> <input type="checkbox" id="agree2" name="agree2" value="1"> <span>위 내용을 읽었으며, 동의합니다.<strong>(필수)</strong></span>
 			</label> <label for="agree_all"> <input type="checkbox" name="agree_all" id="agree_all"> <span>모두 동의합니다</span> <br/>
 			</label>
