@@ -6,6 +6,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+
 	<%
 	session.invalidate();
 	out.println("<script>alert('로그아웃되었습니다'); history.back();</script>");

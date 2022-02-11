@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 
+
 <%
 	String uId = (String) session.getAttribute("uId");
 %>
