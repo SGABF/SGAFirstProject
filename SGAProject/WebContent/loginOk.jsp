@@ -23,7 +23,6 @@
 		MemberVO vo = LoginServiceImpl.getInstance().getMember(idx);
 		nickName = LoginServiceImpl.getInstance().memberLogin(vo);
 		
-		
 	if (idx == 0) {
 		out.println("<script>alert('입력하신 사용자의 정보가 일치하지 않습니다.');history.back();</script>");
 	} else {
@@ -33,11 +32,11 @@
 		session.setAttribute("nickName", nickName);
 		session.setAttribute("phone", vo.getPhone());
 		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("birth", vo.getBirth());
 		session.setAttribute("question", vo.getQuestion());
 		session.setAttribute("answer", vo.getAnswer());
 		response.sendRedirect("welcome.jsp");
 	}
-			
 	%>
 </body>
 </html>

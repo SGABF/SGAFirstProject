@@ -3,8 +3,10 @@
 <%@page import="org.apache.ibatis.session.SqlSessionFactory"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+	request.setCharacterEncoding("utf-8");
 	String id = (String)session.getAttribute("id");
 	String nickName = (String)session.getAttribute("nickName");
+	String foundId = (String)session.getAttribute("foundId");
 %>
 
 <!doctype html>
@@ -72,7 +74,7 @@
 			<form action="loginOk.jsp" method="post">
 				<div class="form-group">
 					<label>아이디</label>
-					<input name="id" type="text" class="form-control" />
+					<input name="id" type="text" class="form-control"/>
 				</div>
 				<br>
 				<div class="form-group">

@@ -19,7 +19,7 @@ public interface MemberDAO {
 	//회원정보 가져오기 select
 	MemberVO getMember(SqlSession sqlSession, int idx) throws SQLException;
 	//아이디 찾기 select
-	String selectId(SqlSession sqlSession, int idx) throws SQLException;
+	String findId(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
 	//비밀번호 검사 
 	int passwordCheck(SqlSession sqlSession, HashMap<String, String> map) throws SQLException;
 	// 아이디 찾기 인증
