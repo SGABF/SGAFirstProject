@@ -2,7 +2,7 @@
 	pageEncoding="EUC-KR"%>
 
 <%
-	 String uId = (String) session.getAttribute("uId");
+	 String id = (String) session.getAttribute("id");
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -69,7 +69,7 @@
 			<form action="findIDForm.jsp" method="post">
 
 				<div id="findID">
-					<input type="hidden" name="uId" value="<%=uId%>">
+					<input type="hidden" name="uId" value="<%=id%>">
 					<p style="font-size: 20pt; font-weight: bold">아이디 찾기</p>
 					<br>
 				</div>
