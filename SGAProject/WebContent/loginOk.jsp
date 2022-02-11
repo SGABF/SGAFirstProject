@@ -15,40 +15,28 @@
 	<%
 	request.setCharacterEncoding("utf-8");
 	String nickName = "";
-	
+
 	String id = request.getParameter("id");
 	String password = request.getParameter("password");
-	
-	int idx = LoginServiceImpl.getInstance().selectIdx(id, password);
-	MemberVO vo = LoginServiceImpl.getInstance().getMember(idx);
-	nickName = LoginServiceImpl.getInstance().memberLogin(vo);
-	out.println(nickName);
-	
-// 	MemberDAOImpl.getInstance().memberLogin(sqlSession, map);
-	
-// 	LoginServiceImpl.getInstance().getMember(idx);
 
-// 	if (id.equals("id") && password.equals("password")) {
-// 		session.setAttribute("id", id);
-// 		response.sendRedirect("welcome.jsp");
-// 	} else if (id.equals("id")) {
-// 		out.println("<script>alert('비밀번호가 틀렸습니다.'); history.back();</script>");
-// 	} else if (password.equals("password")) {
-// 		out.println("<script>alert('아이디가 틀렸습니다.'); history.back();</script>");
-// 	} else {
-// 		out.println("<script>alert('아이디와 비밀번호가 틀렸습니다.'); history.back();</script>");
-// 	}
-	
-// 	// 폼 데이터 정보가 등록된 사용자들 중 있는지 검사.
-// 	for (User u: users) {
-// 	    // 이메일과 패스워드가 일치한다면?
-// 	    if (u.check(inputid, inputPassword)) {
-// 	        /* 2. main.jsp로 이동시키시오. (구글링: jsp response 페이지 redirect)*/
-// 	        response.sendRedirect("welcome.jsp?id=" + inputid);
-// 	        return;
-// 	    } 
-// 	}
-	
+	int idx = LoginServiceImpl.getInstance().selectIdx(id, password);
+		MemberVO vo = LoginServiceImpl.getInstance().getMember(idx);
+		nickName = LoginServiceImpl.getInstance().memberLogin(vo);
+		
+	if (idx == 0) {
+		out.println("<script>alert('입력하신 사용자의 정보가 일치하지 않습니다.');history.back();</script>");
+	} else {
+		out.println("<script>alert('로그인 성공');</script>");
+		session.setAttribute("id", id);
+		session.setAttribute("name", vo.getName());
+		session.setAttribute("nickName", nickName);
+		session.setAttribute("phone", vo.getPhone());
+		session.setAttribute("email", vo.getEmail());
+		session.setAttribute("question", vo.getQuestion());
+		session.setAttribute("answer", vo.getAnswer());
+		response.sendRedirect("welcome.jsp");
+	}
+			
 	%>
 </body>
 </html>

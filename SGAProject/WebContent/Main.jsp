@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <%
-	String id = (String) session.getAttribute("id");
+	String id = (String)session.getAttribute("id");
+	String nickName = (String)session.getAttribute("nickName");
 %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <title>SGAProject</title>
@@ -15,6 +16,14 @@
 <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="css/styles.css" rel="stylesheet" />
+<script type="text/javascript">
+	function loginCheck() {
+		if(id!=null){
+			alert("id" + id)
+		}
+	}
+
+</script>
 <head>
 </head>
 <body id="page-top">
@@ -30,7 +39,10 @@
 					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#">Search</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#contact">Calendar</a></li>
 					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Calculator</a></li>
-					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="login.jsp">login</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" id="1" href="login.jsp">login</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" id="1" type="hidden" href="logout.jsp">logout</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" id="1" type="hidden" href="memberpageUpdate.jsp">My Page</a></li>
+					<li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" id="1" type="hidden" href="memberpageUpdate.jsp"><%=nickName %></a></li>
 				</ul>
 			</div>
 		</div>

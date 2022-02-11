@@ -13,17 +13,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <%-- 부트스트랩을 사용하기 위한 준비 끝 --%>
 <script type="text/javascript">
+	function test() {
+		var p1 = document.getElementById('password1').value;
 
-
-function test() {
-  var p1 = document.getElementById('password1').value;
-  
-  if(p1.length < 6 ) {
-          alert('입력한 글자가 6글자 이상이어야 합니다.');
-          return false;
-      }
-      
-
+		if (p1.length < 6) {
+			alert('입력한 글자가 6글자 이상이어야 합니다.');
+		}
+		return false;
+	}
 </script>
 <style type="text/css">
 h1 {
