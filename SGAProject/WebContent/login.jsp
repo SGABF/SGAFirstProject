@@ -67,7 +67,7 @@
 				}
 			%>
 			<!-- 로그인 폼: https://getbootstrap.com/docs/4.1/components/forms/ -->
-			<form action="loginOk.jsp" method="post">
+			<form action="welcome.jsp" method="post">
 				<div class="form-group">
 					<label>아이디</label>
 					<input name="id" type="text" class="form-control" />

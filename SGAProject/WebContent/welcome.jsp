@@ -10,7 +10,10 @@
 <body class="container">
   <div class="jumbotron">
     <h1>Welcome</h1>
-    <p><%= request.getParameter("id") %>님 반갑습니다.</p>
+    <%
+	request.setCharacterEncoding("utf-8");
+    %>
+    <p><%= request.getParameter("nickName") %>님 반갑습니다.</p>
     <a href="Main.jsp" class="btn btn-primary">Main</a>
   </div>
   <!-- Optional JavaScript -->
