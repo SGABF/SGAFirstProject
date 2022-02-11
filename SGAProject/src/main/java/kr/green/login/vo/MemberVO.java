@@ -2,7 +2,9 @@ package kr.green.login.vo;
 
 import java.util.List;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /*
  * create table member(
@@ -21,6 +23,8 @@ import lombok.Data;
  */
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class MemberVO {
 	private int idx;
 	private String name;
@@ -35,8 +39,6 @@ public class MemberVO {
 	private String answer;
 	
 	private List<PersonVO> bmiList;
-	
-	public MemberVO() {}
 	
 	public MemberVO(int idx, String name, String id, String password, boolean gender, String phone, String email, String birth, String nickName, int question, String answer) {
 		this.idx = idx;

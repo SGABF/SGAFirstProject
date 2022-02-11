@@ -3,6 +3,7 @@
  */
 package kr.green.login.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -34,6 +35,10 @@ public class PersonDAOImpl implements PersonDAO {
 	@Override
 	public void deleteBmi(SqlSession sqlSession, int idx) {
 		sqlSession.delete("person.deleteBmi", idx);
+	}
+	@Override
+	public void deleteAllBmi(SqlSession sqlSession, int ref) throws SQLException {
+		sqlSession.delete("person.deleteAllBmi", ref);
 	}
 
 }
