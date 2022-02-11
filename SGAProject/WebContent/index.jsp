@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
+
 String ctx = request.getContextPath();	//콘텍스트명 얻어오기.
 
 response.setHeader("Pragma-directive", "no-cache");
@@ -7,6 +8,7 @@ response.setHeader("Cache-directive", "no-cache");
 response.setHeader("Pragma", "no-cache");
 response.setHeader("Cache-Control", "no-cache");
 response.setDateHeader("Expires",0); 
+
 %>
 <!DOCTYPE html>
 <html>
@@ -22,6 +24,7 @@ response.setDateHeader("Expires",0);
 	src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript">
 var rand;
+
 
 //캡차 오디오 요청
 function audioCaptcha() {
@@ -81,17 +84,46 @@ $(document).ready(function() {
 	});
 });
 </script>
+
+<script type="text/javascript">
+
+var check = false;
+
+
+
+function clearInput(){
+
+
+	var el = document.getElementById('answer');
+	
+	el.value = "";
+	
+}
+
+
+</script>
+
+<script type="text/javascript">
+function btnDisabled()  {
+	  const target = document.getElementById('check22');
+	  target.disabled = true;
+	}
+</script>
+
 </head>
 <body>
 	<div id="catpcha"></div>
 	<div id="audiocatpch" style="display: none;"></div>
 
-	<input id="reLoad" type="button" value="새로고침" />
+	<input id="reLoad" class="reLoad" name="reLoad" type="button" value="새로고침" onclick="clearInput()"/>
+	
 	<input id="soundOn" type="button" value="음성듣기" />
 	<br />
-	<input type="text" id="answer" name="answer" value="" />
-	<input type="button" id="frmSubmit" value="확인" />
+
 	
+	<input type="text" id="answer" class="answer" name="answer" value="" autofocus="autofocus" />
 	
+	<input type="button" id="frmSubmit" value="확인">
+
 </body>
 </html>
